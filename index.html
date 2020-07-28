@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        div.center {
+            margin: auto;
+            max-width: 300px;
+            margin-top: 8%;
+        }
+
+        div.center h2{
+            margin-bottom: 4em;
+        }
+
+        div.center input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+            background: #f1f1f1;
+        }
+
+        div.center button {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none;
+            cursor: pointer;
+        }
+
+        div.center button:hover {
+            background: #0b7dda;
+        }
+
+        div.center::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input[type=checkbox] {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center">
+        <h2>Ebay Suchhilfe</h2>
+        <input id="idInput" type="text" placeholder="Suchen..">
+        <button onclick="search()" type="submit"><i class="fa fa-search"></i></button>
+        <input type="checkbox" id="idCheckSortEnding" checked>
+        <label for="idCheckSortEnding">Sortieren: Bald endend</label><br>
+        <input type="checkbox" id="idCheckLocationGermany" checked>
+        <label for="idCheckLocationGermany">Artikelstandort: Deutschland</label><br>
+        <input type="checkbox" id="idCheckTypeAuction" checked>
+        <label for="idCheckTypeAuction">Angebotsformat: Auktion</label><br>
+        <input type="checkbox" id="idCheckCompleted">
+        <label for="idCheckCompleted">Beendete Angebote</label>
+    </div>
+</body>
+<script>
+    function search() {
+        var oInput = document.getElementById("idInput");
+        var sText = oInput.value;
+        var sURL = "https://www.ebay.de/sch/i.html?";
+
+        if (sText !== "") {
+            sURL += "_nkw=" + sText;
+
+            var bSortEnding = document.getElementById("idCheckSortEnding").checked;
+            var bLocationGermany = document.getElementById("idCheckLocationGermany").checked;
+            var bTypeAuction = document.getElementById("idCheckTypeAuction").checked;
+            var bCompleted = document.getElementById("idCheckCompleted").checked;
+
+            if (bSortEnding) { sURL += "&_sop=1" }
+            if (bLocationGermany) { sURL += "&LH_PrefLoc=1" }
+            if (bTypeAuction) { sURL += "&LH_Auction=1" }
+            if (bCompleted) { sURL += "&LH_Complete=1" }
+
+            window.open(sURL, '_blank');
+
+            oInput.value = "";
+        }
+    }
+</script>
+
+</html>
