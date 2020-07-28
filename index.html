@@ -21,7 +21,7 @@
             margin-top: 8%;
         }
 
-        div.center h2{
+        div.center h2 {
             margin-bottom: 4em;
         }
 
@@ -63,9 +63,8 @@
 </head>
 
 <body>
-
     <div class="center">
-        <h2>Ebay Suchhilfe</h2>
+        <h2>ebay Suchhilfe</h2>
         <input id="idInput" type="text" placeholder="Suchen..">
         <button onclick="search()" type="submit"><i class="fa fa-search"></i></button>
         <input type="checkbox" id="idCheckSortEnding" checked>
@@ -78,13 +77,17 @@
         <label for="idCheckCompleted">Beendete Angebote</label>
     </div>
 </body>
+
 <script>
     function search() {
         var oInput = document.getElementById("idInput");
         var sText = oInput.value;
         var sURL = "https://www.ebay.de/sch/i.html?";
 
-        if (sText !== "") {
+        if (sText === "elisabeth") {
+            document.getElementsByTagName("html")[0].style.backgroundColor = "darkred";
+
+        } else if (sText !== "") {
             sURL += "_nkw=" + sText;
 
             var bSortEnding = document.getElementById("idCheckSortEnding").checked;
