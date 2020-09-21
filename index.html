@@ -73,8 +73,8 @@
         <label for="idCheckLocationGermany">Artikelstandort: Deutschland</label><br>
         <input type="checkbox" id="idCheckTypeAuction" checked>
         <label for="idCheckTypeAuction">Angebotsformat: Auktion</label><br>
-        <input type="checkbox" id="idCheckCompleted">
-        <label for="idCheckCompleted">Beendete Angebote</label>
+        <input type="checkbox" id="idCheckSold">
+        <label for="idCheckSold">Verkaufte Artikel</label>
     </div>
 </body>
 
@@ -93,12 +93,12 @@
             var bSortEnding = document.getElementById("idCheckSortEnding").checked;
             var bLocationGermany = document.getElementById("idCheckLocationGermany").checked;
             var bTypeAuction = document.getElementById("idCheckTypeAuction").checked;
-            var bCompleted = document.getElementById("idCheckCompleted").checked;
+            var bSold = document.getElementById("idCheckSold").checked;
 
             if (bSortEnding) { sURL += "&_sop=1" }
             if (bLocationGermany) { sURL += "&LH_PrefLoc=1" }
             if (bTypeAuction) { sURL += "&LH_Auction=1" }
-            if (bCompleted) { sURL += "&LH_Complete=1" }
+            if (bSold) { sURL += "&LH_Sold=1" }
 
             window.open(sURL, '_blank');
 
